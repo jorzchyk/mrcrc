@@ -1,0 +1,18 @@
+Large-file processing example for DOU BigData discussion thread.
+Produces CRC16 (well soft of) value histogram for the input file.
+
+Usage:
+	mrcrc nproc input output
+
+nproc is the number of processes to run in parallel.
+output is just 0x10000 longs, the aggregate counters for each possible
+CRC value.
+
+Both input and (less importantly) output and mmaped whole regardless
+of their size, taking advantage of virtual memory and long 64-bit pointers
+common nowadays.
+
+CRC code from
+http://stackoverflow.com/questions/10564491/function-to-calculate-a-crc16
+May or may not be correct, that's not really important as long as it provides
+some CPU load and reasonably scattered output values.
